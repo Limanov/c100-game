@@ -1,7 +1,8 @@
-  var paddle;
+  var paddle, ball;
 
 function startGame() {
 paddle = new component(100, 15, "green", 0, 380);
+ball = new componentCircle(55, 377, "blue",3 , 0 , 2 * Math.PI);
   aGame.start();
   
 }
@@ -44,10 +45,29 @@ function component(width, height, color, x, y) {
     }
     }
 
+    function componentCircle(x, y, color, radius, start, end) {
+      this.speed = 0;
+      this.x = x;
+      this.y = y;
+      this.update = function () {
+          ctx = aGame.context;
+          ctx.fillStyle = color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, radius, start, end);
+          ctx.stroke();
+      }
+      
+      this.newPosition = function() {
+      this.y += this.speed;
+  }
+  }
   function updateAGame() {
     aGame.clear();
     if (aGame.keys && aGame.keys[39]) {paddle.speed= 3;}
     if (aGame.keys && aGame.keys[37]) {paddle.speed= -3;}
+    if (aGame.keys && aGame.keys[32]) {ball.speed= -3;}
     paddle.newPosition();
     paddle.update();
+    ball.newPosition();
+    ball.update();
   }
