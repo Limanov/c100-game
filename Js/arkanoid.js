@@ -2,7 +2,7 @@
 
 function startGame() {
 paddle = new component(100, 15, "green", 0, 380);
-ball = new componentCircle(55, 377, "blue",3 , 0 , 2 * Math.PI);
+ball = new componentCircle(55, 376, "red",3 , 0 , 2 * Math.PI);
   aGame.start();
   
 }
@@ -37,6 +37,7 @@ function component(width, height, color, x, y) {
         this.update = function () {
             ctx = aGame.context;
             ctx.fillStyle = color;
+            ctx.fill();
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
         
@@ -58,7 +59,10 @@ function component(width, height, color, x, y) {
       }
       
       this.newPosition = function() {
+      if(this.y > 3)
       this.y += this.speed;
+      else
+      this.y -= this.speed;
   }
   }
   function updateAGame() {
