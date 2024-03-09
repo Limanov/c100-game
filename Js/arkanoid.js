@@ -71,10 +71,10 @@ function component(width, height, color, x, y) {
     if (aGame.keys && aGame.keys[39]) {paddle.speed= 3;}
     if (aGame.keys && aGame.keys[37]) {paddle.speed= -3;}
     if (aGame.keys && aGame.keys[32]) {ball.speed= -3;}
-  if(ball.y === 1){  
+  if(ball.y <= 1){  
       ball.goUp = false; 
   }
-  else if (ball.y === 376)  
+  else if (ball.y >= 376)  
   {
     ball.goUp = true;
   }
