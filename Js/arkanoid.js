@@ -50,6 +50,7 @@ function component(width, height, color, x, y) {
       this.speed = 0;
       this.x = x;
       this.y = y;
+      this.goUp = true;
       this.update = function () {
           ctx = aGame.context;
           ctx.fillStyle = color;
@@ -59,7 +60,7 @@ function component(width, height, color, x, y) {
       }
       
       this.newPosition = function() {
-      if(this.y > 3)
+      if(this.goUp)
       this.y += this.speed;
       else
       this.y -= this.speed;
@@ -70,6 +71,13 @@ function component(width, height, color, x, y) {
     if (aGame.keys && aGame.keys[39]) {paddle.speed= 3;}
     if (aGame.keys && aGame.keys[37]) {paddle.speed= -3;}
     if (aGame.keys && aGame.keys[32]) {ball.speed= -3;}
+  if(ball.y === 1){  
+      ball.goUp = false; 
+  }
+  else if (ball.y === 376)  
+  {
+    ball.goUp = true;
+  }
     paddle.newPosition();
     paddle.update();
     ball.newPosition();
