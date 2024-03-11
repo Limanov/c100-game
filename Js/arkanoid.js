@@ -1,9 +1,10 @@
-  var paddle, ball;
+  var paddle, ball, block0;
 
 function startGame() {
 paddle = new component(100, 15, "green", 0, 380);
 ball = new componentCircle(55, 376, "red",3 , 0 , 2 * Math.PI);
-  aGame.start();
+block0 = new component(45, 15, "blue", 0, 0); 
+aGame.start();
   
 }
 var aGame = {
@@ -82,4 +83,6 @@ function component(width, height, color, x, y) {
     paddle.update();
     ball.newPosition();
     ball.update();
+    block0.newPosition();
+    block0.update();
   }
