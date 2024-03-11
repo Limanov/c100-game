@@ -1,4 +1,4 @@
-  var paddle, ball;
+  var paddle, ball, block0;
 
 function startGame() {
 paddle = new component(100, 15, "green", 0, 380);
