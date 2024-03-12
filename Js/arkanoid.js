@@ -53,24 +53,31 @@ function component(width, height, color, x, y) {
       this.goUp = true;
       this.update = function () {
           ctx = aGame.context;
-          ctx.fillStyle = color;
           ctx.beginPath();
           ctx.arc(this.x, this.y, radius, start, end);
-          ctx.stroke();
+          ctx.fillStyle = color;
+          ctx.fill();
+          ctx.closePath();
       }
-      
+      this.start = false;
       this.newPosition = function() {
+      if(!ball.start)
+      {
+        this.x += this.speed;
+      }
+      else {
       if(this.goUp)
       this.y += this.speed;
       else
       this.y -= this.speed;
+      }
   }
   }
   function updateAGame() {
     aGame.clear();
-    if (aGame.keys && aGame.keys[39]) {paddle.speed= 3;}
-    if (aGame.keys && aGame.keys[37]) {paddle.speed= -3;}
-    if (aGame.keys && aGame.keys[32]) {ball.speed= -3;}
+    if (aGame.keys && aGame.keys[39]) {paddle.speed = 3; if(!ball.start){ball.speed = 3;}}
+    if (aGame.keys && aGame.keys[37]) {paddle.speed = -3; if(!ball.start){ball.speed = -3;}}
+    if (aGame.keys && aGame.keys[32]) {ball.speed = -3; ball.start = true;}
   if(ball.y <= 1){  
       ball.goUp = false; 
   }
