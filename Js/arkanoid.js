@@ -33,7 +33,7 @@ clear : function() {
 function component(width, height, color, x, y) {
         this.width = width;
         this.height = height;
-        this.speed = 0;
+        this.speedx = 0;
         this.x = x;
         this.y = y;
         this.update = function () {
@@ -44,12 +44,13 @@ function component(width, height, color, x, y) {
         }
         
         this.newPosition = function() {
-        this.x += this.speed;
+        this.x += this.speedx;
     }
     }
 
     function componentCircle(x, y, color, radius, start, end) {
-      this.speed = 0;
+      this.speedx = 0;
+      this.speedy = 0;
       this.x = x;
       this.y = y;
       this.goUp = true;
@@ -66,26 +67,26 @@ function component(width, height, color, x, y) {
       this.newPosition = function() {
       if(!ball.start)
       {
-        this.x += this.speed;
+        this.x += this.speedx;
       }
       else 
       {
-      if(this.goUp){
-      this.y += this.speed;
+      if (this.goUp){
+      this.y += this.speedy;
       }
-      else{
-      this.y -= this.speed;
+      else {
+      this.y -= this.speedy;
       }
       }
       if(this.isTestBall){
       if(this.goUp) 
-      this.x -= this.speed;
+      this.x -= this.speedx;
        else
-       this.x += this.speed;
-       if(this.x >= 640  && this.speed == -3)
+       this.x += this.speedx;
+       if(this.x >= 640  && this.speedx == -3)
        {  
-
-         this.speed = 3; 
+         this.speedx = 3; 
+         this.speedy = 3; 
        }
       //  else if (this.x >= 376 && this.speed)  
       //  {
@@ -105,9 +106,9 @@ function component(width, height, color, x, y) {
 
   function updateAGame() {
     aGame.clear();
-    if (aGame.keys && aGame.keys[39]) {paddle.speed = 3; if(!ball.start){ball.speed = 3; testBall.speed = 3;}}
-    if (aGame.keys && aGame.keys[37]) {paddle.speed = -3; if(!ball.start){ball.speed = -3; testBall.speed = -3;}}
-    if (aGame.keys && aGame.keys[32]) {ball.speed = -3; ball.start = true; testBall.speed = -3; testBall.start = true;testBall.isTestBall = true;}
+    if (aGame.keys && aGame.keys[39]) {paddle.speedx = 3; if(!ball.start){ball.speedx = 3; testBall.speedx = 3;}}
+    if (aGame.keys && aGame.keys[37]) {paddle.speedx = -3; if(!ball.start){ball.speedx = -3; testBall.speedx = -3;}}
+    if (aGame.keys && aGame.keys[32]) {ball.speedy = -3; ball.start = true; testBall.speedx = -3; testBall.speedy = -3; testBall.start = true;testBall.isTestBall = true;}
 
     paddle.newPosition();
     paddle.update();
