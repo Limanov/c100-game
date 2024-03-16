@@ -79,14 +79,21 @@ function component(width, height, color, x, y) {
       }
       }
       if(this.isTestBall){
-      if(this.goUp) 
+      if(this.goUp) {
       this.x -= this.speedx;
-       else
+      this.x += this.speedy;
+      }
+       else{
        this.x += this.speedx;
+      }
        if(this.x >= 640  && this.speedx == -3)
        {  
          this.speedx = 3; 
          this.speedy = 3; 
+       }
+       else if(this.x <= 0){
+        this.speedx = 3; 
+        this.speedy = -3; 
        }
       //  else if (this.x >= 376 && this.speed)  
       //  {
