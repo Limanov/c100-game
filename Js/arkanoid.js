@@ -4,7 +4,7 @@ function startGame() {
 paddle = new component(100, 15, "green", 0, 380);
 ball = new componentCircle(55, 376, "red",3 , 0 , 2 * Math.PI);
 testBall = new componentCircle(60, 376, "black",3 , 0 , 2 * Math.PI);
-block0 = new component(45, 15, "blue", 0, 0); 
+block0 = new componentBlock(45, 15, "blue", 0, 0); 
   aGame.start();
 }
 
@@ -47,6 +47,19 @@ function component(width, height, color, x, y) {
         this.x += this.speedx;
     }
     }
+    function componentBlock(width, height, color, x, y) {
+      this.width = width;
+      this.height = height;
+      this.speedx = 0;
+      this.x = x;
+      this.y = y;
+      this.update = function () {
+          ctx = aGame.context;
+          ctx.fillStyle = color;
+          ctx.fill();
+          ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+  }
 
     function componentCircle(x, y, color, radius, start, end) {
       this.speedx = 0;
@@ -81,7 +94,7 @@ function component(width, height, color, x, y) {
       if(this.isTestBall){
       if(this.goUp) {
       this.x -= this.speedx;
-      this.x += this.speedy;
+      this.y += this.speedy;
       }
        else{
        this.x += this.speedx;
@@ -121,7 +134,6 @@ function component(width, height, color, x, y) {
     paddle.update();
     ball.newPosition();
     ball.update();
-    block0.newPosition();
     block0.update();
     testBall.newPosition();
     testBall.update();
