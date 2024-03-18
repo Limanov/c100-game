@@ -81,10 +81,11 @@ function component(width, height, color, x, y) {
       if(this.isTestBall){
       if(this.goUp) {
       this.x -= this.speedx;
-      this.x += this.speedy;
+      this.y += this.speedy;
       }
        else{
        this.x += this.speedx;
+
       }
        if(this.x >= 640  && this.speedx == -3)
        {  
