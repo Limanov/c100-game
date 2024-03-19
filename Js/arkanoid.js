@@ -1,10 +1,11 @@
-  var paddle, ball, block0, testBall;
+  var paddle, ball, block0, testBall, drawB;
 
 function startGame() {
 paddle = new component(100, 15, "green", 0, 380);
 ball = new componentCircle(55, 376, "red",3 , 0 , 2 * Math.PI);
 testBall = new componentCircle(60, 376, "black",3 , 0 , 2 * Math.PI);
 block0 = new componentBlock(45, 15, "blue", 0, 0); 
+drawB = new drawBall(60, 381,3 ,"black");
   aGame.start();
 }
 
@@ -124,7 +125,31 @@ function component(width, height, color, x, y) {
       }
     }
   }
-
+  let dx =2, dy = -2;
+  function drawBall(x, y, ballRadius, ballColor) {
+    this.x = x;
+    this.y = y;
+    this.update = function () {
+    ctx = aGame.context;
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = ballColor;
+    ctx.fill();
+    ctx.closePath();
+    }
+    this.newPosition = function() {
+    if (x + dx > aGame.canvas.width - ballRadius || x + dx < ballRadius) {
+      dx = -dx;
+    }
+    if (y + dy > aGame.canvas.height - ballRadius || y + dy < ballRadius) {
+      dy = -dy;
+    }
+    x += dx;
+    y += dy;
+    }
+  }
+  
+  
   function updateAGame() {
     aGame.clear();
     if (aGame.keys && aGame.keys[39]) {paddle.speedx = 3; if(!ball.start){ball.speedx = 3; testBall.speedx = 3;}}
@@ -138,4 +163,6 @@ function component(width, height, color, x, y) {
     block0.update();
     testBall.newPosition();
     testBall.update();
+    drawB.update();
+    drawB.newPosition();
 }
