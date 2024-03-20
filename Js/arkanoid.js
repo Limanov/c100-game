@@ -141,11 +141,16 @@ function component(width, height, color, x, y) {
     if (x + dx > aGame.canvas.width - ballRadius || x + dx < ballRadius) {
       dx = -dx;
     }
-    if (y + dy > aGame.canvas.height - ballRadius || y + dy < ballRadius) {
-      dy = -dy;
+    if ( y + dy < ballRadius) {
+      dy =-dy;
     }
-    x += dx;
-    y += dy;
+    else if (y + dy > aGame.canvas.height - ballRadius){
+      if (x > paddle.x && x < paddle.x + paddle.width) {
+        dy = -dy;
+    }
+    }
+     x += dx;
+     y += dy;
     }
   }
   
