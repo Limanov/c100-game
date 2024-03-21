@@ -1,18 +1,18 @@
-  var paddle, ball, block0, testBall, drawB;
-
+var paddle, ball, block0, testBall, drawB;
+var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15;
 function startGame() {
-paddle = new component(100, 15, "green", 0, 380);
-ball = new componentCircle(55, 376, "red",3 , 0 , 2 * Math.PI);
-testBall = new componentCircle(60, 376, "black",3 , 0 , 2 * Math.PI);
+paddle = new component(100, paddleHeight, "green", 0, canvasHeight - paddleHeight);
+ball = new componentCircle(55, canvasHeight - paddleHeight - 3, "red",3 , 0 , 2 * Math.PI);
+testBall = new componentCircle(60, canvasHeight - paddleHeight - 3, "black",3 , 0 , 2 * Math.PI);
 block0 = new componentBlock(45, 15, "blue", 0, 0); 
-drawB = new drawBall(60, 381,3 ,"black");
+drawB = new drawBall(60, canvasHeight - paddleHeight - 5,5 ,"black");
   aGame.start();
 }
 
 var aGame = {
 canvas : document.createElement('canvas'),
 start : function(){
-    this.canvas.width = 640;
+    this.canvas.width = canvasHeight;
     this.canvas.height = 480;
     this.context = this.canvas.getContext('2d');
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
