@@ -1,5 +1,5 @@
 var paddle, ball, block0, testBall, drawB;
-var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15;
+var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, result = 0, life = 3, interval = 20;
 function startGame() {
 paddle = new component(100, paddleHeight, "green", 0, canvasHeight - paddleHeight);
 ball = new componentCircle(55, canvasHeight - paddleHeight - 3, "red",3 , 0 , 2 * Math.PI);
@@ -8,15 +8,23 @@ block0 = new componentBlock(45, 15, "blue", 0, 0);
 drawB = new drawBall(60, canvasHeight - paddleHeight - 5,5 ,"black");
   aGame.start();
 }
-
+function resetStats(){
+  result = 0, life = 3;
+}
 var aGame = {
+resultDiv : document.createElement('div'),
+resultText : document.createTextNode('RESULT: ' + result + ' LIFE: ' + life ),
 canvas : document.createElement('canvas'),
 start : function(){
-    this.canvas.width = canvasHeight;
-    this.canvas.height = 480;
+    this.canvas.width = canvasWidth;
+    this.canvas.height = canvasHeight;
     this.context = this.canvas.getContext('2d');
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-    this.interval = setInterval(updateAGame, 20);
+    if(this.interval == undefined){
+    this.interval = setInterval(updateAGame, interval);
+    }
+    this.resultDiv.appendChild(this.resultText);
+    document.body.insertBefore(this.resultDiv, this.canvas);
     window.addEventListener('keydown', function (e) {
       e.preventDefault();
       aGame.keys = (aGame.keys || []);
@@ -28,6 +36,7 @@ start : function(){
 },
 clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.resultText.textContent = 'RESULT: ' + result + ' LIFE: ' + life ;
 }
 }
 
@@ -148,6 +157,14 @@ function component(width, height, color, x, y) {
       if (x > paddle.x && x < paddle.x + paddle.width) {
         dy = -dy;
     }
+    else{
+      life -= 1;
+      startGame();
+    }
+    if(life == 0){
+      alert("YOU lose!!!");
+      resetStats();
+    }
     }
      x += dx;
      y += dy;
@@ -157,8 +174,8 @@ function component(width, height, color, x, y) {
   
   function updateAGame() {
     aGame.clear();
-    if (aGame.keys && aGame.keys[39]) {paddle.speedx = 3; if(!ball.start){ball.speedx = 3; testBall.speedx = 3;}}
-    if (aGame.keys && aGame.keys[37]) {paddle.speedx = -3; if(!ball.start){ball.speedx = -3; testBall.speedx = -3;}}
+    if (aGame.keys && aGame.keys[39]) {paddle.speedx = 3; if(!ball.start){ball.speedx = 3; testBall.speedx = 3;}} else {paddle.speedx = 0;ball.speedx = 0; testBall.speedx = 0;}
+    if (aGame.keys && aGame.keys[37]) {paddle.speedx = -3; if(!ball.start){ball.speedx = -3; testBall.speedx = -3;}}// else {paddle.speedx = 0}
     if (aGame.keys && aGame.keys[32]) {ball.speedy = -3; ball.start = true; testBall.speedx = -3; testBall.speedy = -3; testBall.start = true;testBall.isTestBall = true;}
 
     paddle.newPosition();
