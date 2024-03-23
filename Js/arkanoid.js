@@ -174,8 +174,8 @@ function component(width, height, color, x, y) {
   
   function updateAGame() {
     aGame.clear();
-    if (aGame.keys && aGame.keys[39]) {paddle.speedx = 3; if(!ball.start){ball.speedx = 3; testBall.speedx = 3;}} else {paddle.speedx = 0;ball.speedx = 0; testBall.speedx = 0;}
-    if (aGame.keys && aGame.keys[37]) {paddle.speedx = -3; if(!ball.start){ball.speedx = -3; testBall.speedx = -3;}}// else {paddle.speedx = 0}
+    if (aGame.keys && aGame.keys[39]) {if(paddle.x <= canvasWidth - paddle.width){paddle.speedx = 3}else{paddle.speedx = 0}; if(!ball.start){ball.speedx = 3; testBall.speedx = 3;}} else {paddle.speedx = 0;ball.speedx = 0; testBall.speedx = 0;}
+    if (aGame.keys && aGame.keys[37]) {if(paddle.x >= 0){paddle.speedx = -3}else{paddle.speedx = 0}; if(!ball.start){ball.speedx = -3; testBall.speedx = -3;}}// else {paddle.speedx = 0}
     if (aGame.keys && aGame.keys[32]) {ball.speedy = -3; ball.start = true; testBall.speedx = -3; testBall.speedy = -3; testBall.start = true;testBall.isTestBall = true;}
 
     paddle.newPosition();
