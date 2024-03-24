@@ -1,7 +1,7 @@
 var paddle, ball, block0, testBall, drawB;
-var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, result = 0, life = 3, interval = 20;
+var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 100, result = 0, life = 3, interval = 20;
 function startGame() {
-paddle = new component(100, paddleHeight, "green", 0, canvasHeight - paddleHeight);
+paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - 100, canvasHeight - paddleHeight);
 ball = new componentCircle(55, canvasHeight - paddleHeight - 3, "red",3 , 0 , 2 * Math.PI);
 testBall = new componentCircle(60, canvasHeight - paddleHeight - 3, "black",3 , 0 , 2 * Math.PI);
 block0 = new componentBlock(45, 15, "blue", 0, 0); 
@@ -174,9 +174,29 @@ function component(width, height, color, x, y) {
   
   function updateAGame() {
     aGame.clear();
-    if (aGame.keys && aGame.keys[39]) {if(paddle.x <= canvasWidth - paddle.width){paddle.speedx = 3}else{paddle.speedx = 0}; if(!ball.start){ball.speedx = 3; testBall.speedx = 3;}} else {paddle.speedx = 0;ball.speedx = 0; testBall.speedx = 0;}
-    if (aGame.keys && aGame.keys[37]) {if(paddle.x >= 0){paddle.speedx = -3}else{paddle.speedx = 0}; if(!ball.start){ball.speedx = -3; testBall.speedx = -3;}}// else {paddle.speedx = 0}
-    if (aGame.keys && aGame.keys[32]) {ball.speedy = -3; ball.start = true; testBall.speedx = -3; testBall.speedy = -3; testBall.start = true;testBall.isTestBall = true;}
+    if (aGame.keys && aGame.keys[39]) 
+      {
+        if(paddle.x <= canvasWidth - paddle.width)
+          {paddle.speedx = 3}
+        else{paddle.speedx = 0}; 
+        if(!ball.start)
+        {ball.speedx = 3; testBall.speedx = 3;}
+      }
+    else {paddle.speedx = 0;ball.speedx = 0; testBall.speedx = 0;}
+    if (aGame.keys && aGame.keys[37]) 
+    {
+      if(paddle.x >= 0)
+      {paddle.speedx = -3}
+      else{paddle.speedx = 0}; 
+      if(!ball.start)
+      {ball.speedx = -3; testBall.speedx = -3;}
+    }
+    if (aGame.keys && aGame.keys[32]) 
+    {
+      ball.speedy = -3; ball.start = true;
+      testBall.speedx = -3; testBall.speedy = -3;
+      testBall.start = true;testBall.isTestBall = true;
+    }
 
     paddle.newPosition();
     paddle.update();
