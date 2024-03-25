@@ -1,15 +1,15 @@
 var paddle, ball, block0, testBall, drawB;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 100, result = 0, life = 3, interval = 20;
 function startGame() {
-paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - 100, canvasHeight - paddleHeight);
+paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
 ball = new componentCircle(55, canvasHeight - paddleHeight - 3, "red",3 , 0 , 2 * Math.PI);
 testBall = new componentCircle(60, canvasHeight - paddleHeight - 3, "black",3 , 0 , 2 * Math.PI);
 block0 = new componentBlock(45, 15, "blue", 0, 0); 
-drawB = new drawBall(60, canvasHeight - paddleHeight - 5,5 ,"black");
+drawB = new drawBall(canvasWidth/2, canvasHeight - paddleHeight - 5,2 ,-2 ,5 ,"black");
   aGame.start();
 }
 function resetStats(){
-  result = 0, life = 3;
+  result = 0, life = 3;dx =2, dy = -2;
 }
 var aGame = {
 resultDiv : document.createElement('div'),
@@ -134,8 +134,7 @@ function component(width, height, color, x, y) {
       }
     }
   }
-  let dx =2, dy = -2;
-  function drawBall(x, y, ballRadius, ballColor) {
+  function drawBall(x, y,dx ,dy , ballRadius, ballColor) {
     this.x = x;
     this.y = y;
     this.update = function () {
