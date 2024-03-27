@@ -1,11 +1,11 @@
-var paddle, ball, block0, testBall, drawB;
+var paddle, ball, block0, testBall, drawB,dx = 0,dy = 0;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 100, result = 0, life = 3, interval = 20;
 function startGame() {
 paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
 ball = new componentCircle(55, canvasHeight - paddleHeight - 3, "red",3 , 0 , 2 * Math.PI);
 testBall = new componentCircle(60, canvasHeight - paddleHeight - 3, "black",3 , 0 , 2 * Math.PI);
 block0 = new componentBlock(45, 15, "blue", 0, 0); 
-drawB = new drawBall(canvasWidth/2, canvasHeight - paddleHeight - 5,2 ,-2 ,5 ,"black");
+drawB = new drawBall(canvasWidth/2, canvasHeight - paddleHeight - 5,5 ,"black");
   aGame.start();
 }
 function resetStats(){
@@ -134,7 +134,7 @@ function component(width, height, color, x, y) {
       }
     }
   }
-  function drawBall(x, y,dx ,dy , ballRadius, ballColor) {
+  function drawBall(x, y, ballRadius, ballColor) {
     this.x = x;
     this.y = y;
     this.start = false;
@@ -167,16 +167,25 @@ function component(width, height, color, x, y) {
       alert("YOU lose!!!");
       resetStats();
     }
+    }     
+      x += dx;
+      y += dy;
     }
-     x += dx;
-     y += dy;
+    else{
+      x += dx;
+
     }
+    
     }
   }
   
   
   function updateAGame() {
     aGame.clear();
+    if(!drawB.start)
+    {
+      dx = 0;
+    }
     if (aGame.keys && aGame.keys[39]) 
       {
         if(paddle.x <= canvasWidth - paddle.width)
@@ -185,7 +194,8 @@ function component(width, height, color, x, y) {
         if(!ball.start)
         {ball.speedx = 3; testBall.speedx = 3;}
         if(!drawB.start)
-        {drawB.x += 3;}
+        { dx = 3;}
+
       }
     else {paddle.speedx = 0;ball.speedx = 0; testBall.speedx = 0;}
     if (aGame.keys && aGame.keys[37]) 
@@ -196,13 +206,14 @@ function component(width, height, color, x, y) {
       if(!ball.start)
       {ball.speedx = -3; testBall.speedx = -3;}
       if(!drawB.start)
-      {drawB.x += -3;}
+      {dx = -3;}
     }
     if (aGame.keys && aGame.keys[32]) 
     {
       ball.speedy = -3; ball.start = true;
       testBall.speedx = -3; testBall.speedy = -3;
       testBall.start = true;testBall.isTestBall = true; drawB.start =true;
+      dx = 3; dy = -3;
     }
 
     paddle.newPosition();
