@@ -193,7 +193,7 @@ function component(width, height, color, x, y) {
         else{paddle.speedx = 0}; 
         if(!ball.start)
         {ball.speedx = 3; testBall.speedx = 3;}
-        if(!drawB.start)
+        if(!drawB.start && drawB.x <= paddleWidth/2)
         { dx = 3;}
 
       }
