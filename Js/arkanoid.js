@@ -1,8 +1,7 @@
-var paddle, ball, block0, drawB,dx = 0,dy = 0;
+var paddle, block0, drawB,dx = 0,dy = 0;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 100, result = 0, life = 3, interval = 20;
 function startGame() {
 paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
-ball = new componentCircle(55, canvasHeight - paddleHeight - 3, "red",3 , 0 , 2 * Math.PI);
 block0 = new componentBlock(45, 15, "blue", 0, 0); 
 drawB = new drawBall(canvasWidth/2, canvasHeight - paddleHeight - 5,5 ,"black");
   aGame.start();
@@ -118,10 +117,6 @@ function component(width, height, color, x, y) {
         this.speedx = 3; 
         this.speedy = -3; 
        }
-      //  else if (this.x >= 376 && this.speed)  
-      //  {
-      //    this.goUp = testBall.speed;
-      //  }
       }
       if(this.y <= 1)
       {  
@@ -188,34 +183,27 @@ function component(width, height, color, x, y) {
         if(paddle.x <= canvasWidth - paddle.width)
           {paddle.speedx = 3}
         else{paddle.speedx = 0}; 
-        if(!ball.start)
-        {ball.speedx = 3;}
         if(!drawB.start && drawB.x <= paddleWidth/2)
         { dx = 3;}
 
       }
-    else {paddle.speedx = 0;ball.speedx = 0;}
+    else {paddle.speedx = 0;}
     if (aGame.keys && aGame.keys[37]) 
     {
       if(paddle.x >= 0)
       {paddle.speedx = -3}
       else{paddle.speedx = 0}; 
-      if(!ball.start)
-      {ball.speedx = -3;}
       if(!drawB.start)
       {dx = -3;}
     }
     if (aGame.keys && aGame.keys[32]) 
     {
-      ball.speedy = -3; ball.start = true;
       drawB.start =true;
       dx = 3; dy = -3;
     }
 
     paddle.newPosition();
     paddle.update();
-    ball.newPosition();
-    ball.update();
     block0.update();
     drawB.update();
     drawB.newPosition();
