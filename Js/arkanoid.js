@@ -183,7 +183,7 @@ function component(width, height, color, x, y) {
         if(paddle.x <= canvasWidth - paddle.width)
           {paddle.speedx = 3}
         else{paddle.speedx = 0}; 
-        if(!drawB.start && drawB.x <= paddleWidth/2)
+        if(!drawB.start && paddle.x <= canvasWidth - paddleWidth)
         { dx = 3;}
 
       }
@@ -193,7 +193,7 @@ function component(width, height, color, x, y) {
       if(paddle.x >= 0)
       {paddle.speedx = -3}
       else{paddle.speedx = 0}; 
-      if(!drawB.start)
+      if(!drawB.start && paddle.x - paddle.x/2 >= 0)
       {dx = -3;}
     }
     if (aGame.keys && aGame.keys[32]) 
