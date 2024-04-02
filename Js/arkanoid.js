@@ -1,4 +1,4 @@
-var paddle, block0, drawB, dx = 0, dy = 0;
+var paddle, block0, drawB, dx = 0, dy = 0; gameSpeed = 5;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 100, result = 0, life = 3, interval = 20;
 function startGame() {
 paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
@@ -7,7 +7,7 @@ drawB = new drawBall(canvasWidth/2, canvasHeight - paddleHeight - 5,5 ,"black");
   aGame.start();
 }
 function resetStats(){
-  result = 0, life = 3; dx =2, dy = -2;
+  result = 0, life = 3; dx =0, dy = -gameSpeed;
 }
 var aGame = {
 resultDiv : document.createElement('div'),
@@ -181,25 +181,25 @@ function component(width, height, color, x, y) {
     if (aGame.keys && aGame.keys[39]) 
       {
         if(paddle.x <= canvasWidth - paddle.width)
-          {paddle.speedx = 3}
+          {paddle.speedx = gameSpeed}
         else{paddle.speedx = 0}; 
         if(!drawB.start && paddle.x <= canvasWidth - paddleWidth)
-        { dx = 3;}
+        { dx = gameSpeed;}
 
       }
     else {paddle.speedx = 0;}
     if (aGame.keys && aGame.keys[37]) 
     {
       if(paddle.x >= 0)
-      {paddle.speedx = -3}
+      {paddle.speedx = -gameSpeed}
       else{paddle.speedx = 0}; 
       if(!drawB.start && paddle.x - paddle.x/2 >= 0)
-      {dx = -3;}
+      {dx = -gameSpeed;}
     }
     if (aGame.keys && aGame.keys[32]) 
     {
       drawB.start =true;
-      dx = 3; dy = -3;
+      dx = 0; dy = -gameSpeed;
     }
 
     paddle.newPosition();
