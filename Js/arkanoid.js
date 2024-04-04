@@ -1,5 +1,5 @@
 var paddle, block0, drawB, dx = 0, dy = 0; gameSpeed = 5;
-var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 100, result = 0, life = 3, interval = 20;
+var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 function startGame() {
 paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
 block0 = new componentBlock(45, 15, "blue", 0, 0); 
