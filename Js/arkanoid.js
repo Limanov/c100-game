@@ -152,10 +152,12 @@ function component(width, height, color, x, y) {
     else if (y + dy > aGame.canvas.height - ballRadius -  paddleHeight){
       if (x > paddle.x && x < paddle.x + paddle.width) {
         if (drawB.x <= paddle.x + paddle.width/2){
-        dy = -gameSpeed;
+        dy = -gameSpeed;        
+        dx = -1 * dx;
       }
       else if (drawB.x > paddle.x + paddle.width/2){
-        dy = -gameSpeed/2 ; 
+        dy = -gameSpeed/2 ;
+ 
       }
     }
     else{
