@@ -1,14 +1,30 @@
-var paddle, block0, drawB, dx = 0, dy = 0; gameSpeed = 5;
+var paddle, block0, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 5;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
+const brickRowCount = 3;
+const brickColumnCount = 5;
+const brickWidth = 75;
+const brickHeight = 20;
+const brickPadding = 10;
+const brickOffsetTop = 30;
+const brickOffsetLeft = 30;
+let bricks = [];
+for (let c = 0; c < brickColumnCount; c++) {
+  bricks[c] = [];
+  for (let r = 0; r < brickRowCount; r++) {
+    bricks[c][r] = { x: 0, y: 0 };
+  }
+}
 function startGame() {
 paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
 block0 = new componentBlock(45, 15, "blue", 0, 0); 
 drawB = new drawBall(canvasWidth/2, canvasHeight - paddleHeight - 5,5 ,"black");
+drawBr = new drawBricks();
   aGame.start();
 }
 function resetStats(){
   result = 0, life = 3; dx =0, dy = -gameSpeed;
 }
+
 var aGame = {
 resultDiv : document.createElement('div'),
 resultText : document.createTextNode('RESULT: ' + result + ' LIFE: ' + life ),
@@ -68,7 +84,24 @@ function component(width, height, color, x, y) {
           ctx.fillRect(this.x, this.y, this.width, this.height);
       }
   }
-
+function drawBricks() {
+  this.update = function(){
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      let brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+      let brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+      bricks[c][r].x = brickX;
+      bricks[c][r].y = brickY;
+      ctx = aGame.context;
+      ctx.beginPath();
+      ctx.rect(brickX, brickY, brickWidth, brickHeight);
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
+  }
+}
+}
     function componentCircle(x, y, color, radius, start, end) {
       this.speedx = 0;
       this.speedy = 0;
@@ -152,7 +185,7 @@ function component(width, height, color, x, y) {
     else if (y + dy > aGame.canvas.height - ballRadius -  paddleHeight){
       if (x > paddle.x && x < paddle.x + paddle.width) {
         if (drawB.x <= paddle.x + paddle.width/2){
-        dy = -gameSpeed;        
+        dy = -gameSpeed;
         dx = -1 * dx;
       }
       else if (drawB.x > paddle.x + paddle.width/2){
@@ -214,4 +247,5 @@ function component(width, height, color, x, y) {
     block0.update();
     drawB.update();
     drawB.newPosition();
+    drawBr.update();
 }
