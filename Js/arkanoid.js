@@ -1,10 +1,10 @@
 var paddle, block0, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 5;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 const brickRowCount = 3;
-const brickColumnCount = 5;
+const brickColumnCount = 8;
 const brickWidth = 75;
 const brickHeight = 20;
-const brickPadding = 10;
+const brickPadding = 1;
 const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
 let bricks = [];
