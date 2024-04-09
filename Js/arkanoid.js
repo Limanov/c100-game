@@ -95,7 +95,7 @@ function drawBricks() {
       ctx = aGame.context;
       ctx.beginPath();
       ctx.rect(brickX, brickY, brickWidth, brickHeight);
-      ctx.fillStyle = "#0095DD";
+      ctx.fillStyle = "#0095"+ c + r;
       ctx.fill();
       ctx.closePath();
     }
