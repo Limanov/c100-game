@@ -1,6 +1,6 @@
 var paddle, block0, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 5;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
-const brickRowCount = 5;
+const brickRowCount = 8;
 const brickColumnCount = 8;
 const brickWidth = 75;
 const brickHeight = 20;
