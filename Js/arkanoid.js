@@ -1,4 +1,4 @@
-var paddle, block0, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 5;
+var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 5;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 const brickRowCount = 8;
 const brickColumnCount = 8;
@@ -16,7 +16,6 @@ for (let c = 0; c < brickColumnCount; c++) {
 }
 function startGame() {
 paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
-block0 = new componentBlock(45, 15, "blue", 0, 0); 
 drawB = new drawBall(canvasWidth/2, canvasHeight - paddleHeight - 5,5 ,"black");
 drawBr = new drawBricks();
   aGame.start();
@@ -244,7 +243,6 @@ function drawBricks() {
 
     paddle.newPosition();
     paddle.update();
-    block0.update();
     drawB.update();
     drawB.newPosition();
     drawBr.update();
