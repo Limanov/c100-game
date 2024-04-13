@@ -11,7 +11,7 @@ let bricks = [];
 for (let c = 0; c < brickColumnCount; c++) {
   bricks[c] = [];
   for (let r = 0; r < brickRowCount; r++) {
-    bricks[c][r] = { x: 0, y: 0 };
+    bricks[c][r] = { x: 0, y: 0 , IsVisible: 1};
   }
 }
 function startGame() {
@@ -52,6 +52,22 @@ clear : function() {
     this.resultText.textContent = 'RESULT: ' + result + ' LIFE: ' + life ;
 }
 }
+function collisionDetection() {
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      const b = bricks[c][r];
+      if (b.status === 1) {
+        if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) 
+        {
+          dy = -dy;
+          b.status = 0;
+        }
+      }
+    }
+  }
+}
+
+
 
 function component(width, height, color, x, y) {
         this.width = width;
@@ -87,6 +103,7 @@ function drawBricks() {
   this.update = function(){
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
+      if(bricks[c][r].IsVisible === 1){
       let brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
       let brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
       bricks[c][r].x = brickX;
@@ -98,6 +115,7 @@ function drawBricks() {
       ctx.fill();
       ctx.closePath();
     }
+  }
   }
 }
 }
@@ -171,6 +189,7 @@ function drawBricks() {
     ctx.fillStyle = ballColor;
     ctx.fill();
     ctx.closePath();
+    collisionDetection();
     }
     this.newPosition = function() {
     if(this.start)
