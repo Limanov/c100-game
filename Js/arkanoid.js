@@ -56,11 +56,11 @@ function collisionDetection() {
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
       const b = bricks[c][r];
-      if (b.status === 1) {
-        if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) 
+      if (b.IsVisible === 1) {
+        if (canvasWidth > b.x && canvasWidth < b.x + brickWidth && canvasHeight > b.y && canvasHeight < b.y + brickHeight) 
         {
           dy = -dy;
-          b.status = 0;
+          b.IsVisible = 0;
         }
       }
     }
@@ -114,6 +114,20 @@ function drawBricks() {
       ctx.fillStyle = "#0095"+ c + r;
       ctx.fill();
       ctx.closePath();
+    }
+  }
+  this.collisionDetection = function(){
+    for (let c = 0; c < brickColumnCount; c++) {
+      for (let r = 0; r < brickRowCount; r++) {
+        const b = bricks[c][r];
+        if (b.IsVisible === 1) {
+          if (canvasWidth > b.x && canvasWidth < b.x + brickWidth && canvasHeight > b.y && canvasHeight < b.y + brickHeight) 
+        {
+            dy = -dy;
+            b.IsVisible = 0;
+          }
+        }
+      }
     }
   }
   }
@@ -265,4 +279,5 @@ function drawBricks() {
     drawB.update();
     drawB.newPosition();
     drawBr.update();
+    drawBr.collisionDetection();
 }
