@@ -1,4 +1,4 @@
-var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10;
+var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10;//, ballX, ballY;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 const brickRowCount = 8;
 const brickColumnCount = 8;
@@ -121,7 +121,7 @@ function drawBricks() {
       for (let r = 0; r < brickRowCount; r++) {
         const b = bricks[c][r];
         if (b.IsVisible === 1) {
-          if (canvasWidth > b.x && canvasWidth < b.x + brickWidth && canvasHeight > b.y && canvasHeight < b.y + brickHeight) 
+          if (drawB.x > b.x && drawB.x < b.x + brickWidth && drawB.y > b.y && drawB.y < b.y + brickHeight) 
         {
             dy = -dy;
             b.IsVisible = 0;
@@ -234,11 +234,11 @@ function drawBricks() {
       resetStats();
     }
     }     
-      x += dx;
-      y += dy;
+      this.x += dx;
+      this.y += dy;
     }
     else{
-      x += dx;
+      this.x += dx;
     }
     }
   }
