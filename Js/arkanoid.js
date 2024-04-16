@@ -236,9 +236,12 @@ function drawBricks() {
     }     
       this.x += dx;
       this.y += dy;
+      x += dx;
+      y += dy;
     }
     else{
       this.x += dx;
+      x += dx;
     }
     }
   }
