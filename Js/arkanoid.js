@@ -125,6 +125,7 @@ function drawBricks() {
         {
             dy = -dy;
             b.IsVisible = 0;
+            result += 100;
           }
         }
       }
