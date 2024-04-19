@@ -1,4 +1,4 @@
-var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10;
+var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = 2;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 const brickRowCount = 8;
 const brickColumnCount = 8;
@@ -101,6 +101,7 @@ function component(width, height, color, x, y) {
   }
 function drawBricks() {
   this.update = function(){
+  if(stage === 1){
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
       if(bricks[c][r].IsVisible === 1){
@@ -114,6 +115,28 @@ function drawBricks() {
       ctx.fillStyle = "#0095"+ c + r;
       ctx.fill();
       ctx.closePath();
+    }
+  }
+  }
+  }
+  if(stage === 2){
+    for (let c = 0; c < brickColumnCount; c++) {
+      for (let r = 0; r < brickRowCount; r++) {
+        if(r % 2 === 1){
+        if(bricks[c][r].IsVisible === 1){
+        let brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+        let brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+        bricks[c][r].x = brickX;
+        bricks[c][r].y = brickY;
+        ctx = aGame.context;
+        ctx.beginPath();
+        ctx.rect(brickX, brickY, brickWidth, brickHeight);
+        ctx.fillStyle = "#0095"+ c + r;
+        ctx.fill();
+        ctx.closePath();
+      }
+    }
+    }
     }
   }
   this.collisionDetection = function(){
@@ -130,7 +153,6 @@ function drawBricks() {
         }
       }
     }
-  }
   }
 }
 }
