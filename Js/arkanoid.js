@@ -101,7 +101,7 @@ function component(width, height, color, x, y) {
   }
 function drawBricks() {
   this.update = function(){
-  if(stage === 1){
+  if(stage === 2){
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
       if(bricks[c][r].IsVisible === 1){
@@ -119,7 +119,7 @@ function drawBricks() {
   }
   }
   }
-  if(stage === 2){
+  if(stage === 1){
     for (let c = 0; c < brickColumnCount; c++) {
       for (let r = 0; r < brickRowCount; r++) {
         if(r % 2 === 1){
