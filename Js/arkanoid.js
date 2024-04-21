@@ -7,20 +7,26 @@ const brickHeight = 20;
 const brickPadding = 1;
 const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
-let bricks = [];
-for (let c = 0; c < brickColumnCount; c++) {
+var bricks = [];
+function newBricks(){
+
+for (var c = 0; c < brickColumnCount; c++) {
   bricks[c] = [];
-  for (let r = 0; r < brickRowCount; r++) {
+  for (var r = 0; r < brickRowCount; r++) {
     bricks[c][r] = { x: 0, y: 0 , IsVisible: 1};
   }
 }
+}
+newBricks();
 function startGame() {
 paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
 drawB = new drawBall(canvasWidth/2, canvasHeight - paddleHeight - 5,5 ,"black");
+
 drawBr = new drawBricks();
   aGame.start();
 }
 function resetStats(){
+  newBricks();
   result = 0, life = 3; dx =0, dy = -gameSpeed;
 }
 
