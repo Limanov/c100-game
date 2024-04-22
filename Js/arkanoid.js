@@ -1,4 +1,4 @@
-var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = 2;
+var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = 1;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 const brickRowCount = 8;
 const brickColumnCount = 8;
@@ -9,7 +9,6 @@ const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
 var bricks = [];
 function newBricks(){
-
 for (var c = 0; c < brickColumnCount; c++) {
   bricks[c] = [];
   for (var r = 0; r < brickRowCount; r++) {
@@ -71,6 +70,10 @@ function collisionDetection() {
       }
     }
   }
+  //if(bricks.every()){
+  // stage = 2;
+  // newBricks();
+  // }
 }
 
 
