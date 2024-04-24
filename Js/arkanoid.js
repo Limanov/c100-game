@@ -70,7 +70,7 @@ function collisionDetection() {
       }
     }
   }
-  if(bricks.every(({IsVisible}) => IsVisible === 0)){
+  if(bricks.every(function (item) {item.every(function (item2) {item2.IsVisible=== 0}) })){
    stage++;
    newBricks();
    }
