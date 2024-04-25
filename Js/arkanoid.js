@@ -70,14 +70,24 @@ function collisionDetection() {
       }
     }
   }
-  if(bricks.every(function (item) {item.every(function (item2) {item2.IsVisible=== 0}) })){
+  if(IsAllNotVisible()){
    stage++;
    newBricks();
    }
 }
 
-
-
+function IsAllNotVisible(){
+  let IsNV = true;
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      const b = bricks[c][r];
+      if (b.IsVisible === 1) {
+       IsNV = false;
+      }
+    }
+}
+return IsNV;
+}
 function component(width, height, color, x, y) {
         this.width = width;
         this.height = height;
