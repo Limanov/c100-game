@@ -7,6 +7,7 @@ mechanika poruszanaia
 mechanika odbijania
 mechanika kolizji
 grafiki
+dodanie leveli
 
 ewentualnie
 edycja poziomów
