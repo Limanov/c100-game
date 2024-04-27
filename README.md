@@ -13,5 +13,5 @@ ewentualnie
 edycja poziomów
 bonusy
 bossowie
-
+przepisanie na react
 
