@@ -7,10 +7,11 @@ mechanika poruszanaia
 mechanika odbijania
 mechanika kolizji
 grafiki
+dodanie leveli
 
 ewentualnie
 edycja poziomów
 bonusy
 bossowie
-
+przepisanie na react
 
