@@ -31,7 +31,7 @@ function resetStats(){
 
 var aGame = {
 resultDiv : document.createElement('div'),
-resultText : document.createTextNode('RESULT: ' + result + ' LIFE: ' + life ),
+resultText : document.createTextNode('RESULT: ' + result + ' LIFE: ' + life  + ' STAGE: ' + stage),
 canvas : document.createElement('canvas'),
 start : function(){
     this.canvas.width = canvasWidth;
@@ -54,7 +54,7 @@ start : function(){
 },
 clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.resultText.textContent = 'RESULT: ' + result + ' LIFE: ' + life ;
+    this.resultText.textContent = 'RESULT: ' + result + ' LIFE: ' + life + ' STAGE: ' + stage ;
 }
 }
 function collisionDetection() {
