@@ -16,6 +16,9 @@ for (var c = 0; c < brickColumnCount; c++) {
   }
 }
 }
+function oneBrick(){
+  bricks[0][0] = { x: 0, y: 0 , IsVisible: 1};
+}
 newBricks();
 function startGame() {
 paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
@@ -140,7 +143,27 @@ function drawBricks() {
       }
       }
     }
-  if(stage === 2){
+    if(stage === 0){
+      for (let c = 0; c < brickColumnCount; c++) {
+        for (let r = 0; r < brickRowCount; r++) {
+          if(r % 2 === 1 && c % 2 === 1){
+          if(bricks[c][r].IsVisible === 1){
+          let brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+          let brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+          bricks[c][r].x = brickX;
+          bricks[c][r].y = brickY;
+          ctx = aGame.context;
+          ctx.beginPath();
+          ctx.rect(brickX, brickY, brickWidth, brickHeight);
+          ctx.fillStyle = "#0095"+ c + r;
+          ctx.fill();
+          ctx.closePath();
+        }
+      }
+      }
+      }
+    }
+  if(stage === -1){
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
       if(bricks[c][r].IsVisible === 1){
