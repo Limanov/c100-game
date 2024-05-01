@@ -12,7 +12,7 @@ function newBricks(){
 for (var c = 0; c < brickColumnCount; c++) {
   bricks[c] = [];
   for (var r = 0; r < brickRowCount; r++) {
-    bricks[c][r] = { x: 0, y: 0 , IsVisible: 1};
+    bricks[c][r] = { x: 0, y: 0 , IsVisible: 1, hits: 2};
   }
 }
 }
@@ -67,8 +67,12 @@ function collisionDetection() {
       if (b.IsVisible === 1) {
         if (canvasWidth > b.x && canvasWidth < b.x + brickWidth && canvasHeight > b.y && canvasHeight < b.y + brickHeight) 
         {
+          b.hits--;
           dy = -dy;
-          b.IsVisible = 0;
+          if(b.hits === 0)
+          {
+            b.IsVisible = 0;
+          }
         }
       }
     }
@@ -228,8 +232,12 @@ function drawBricks() {
         if (b.IsVisible === 1) {
           if (drawB.x > b.x && drawB.x < b.x + brickWidth && drawB.y > b.y && drawB.y < b.y + brickHeight) 
         {
-            dy = -dy;
+          b.hits--;
+          dy = -dy;
+          if(b.hits === 0)
+          {
             b.IsVisible = 0;
+          }
             result += 100;
           }
         }
