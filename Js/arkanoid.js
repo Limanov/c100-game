@@ -343,7 +343,7 @@ function drawBricks() {
       startGame();
     }
     if(life == 0){
-      alert("YOU lose!!!");
+      alert("YOU lose!!! You have " + result + "  points");
       resetStats();
     }
     }     
