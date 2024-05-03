@@ -8,6 +8,7 @@ mechanika odbijania
 mechanika kolizji
 grafiki
 dodanie leveli
+życia cegiełek
 
 ewentualnie
 edycja poziomów
