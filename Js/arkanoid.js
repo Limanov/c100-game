@@ -103,7 +103,7 @@ function component(width, height, color, x, y) {
         this.y = y;
         this.update = function () {
             ctx = aGame.context;
-            ctx.fillStyle = color;
+            ctx.fillStyle = x*y;
             ctx.fill();
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
@@ -313,7 +313,7 @@ function drawBricks() {
     ctx = aGame.context;
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = ballColor;
+    ctx.fillStyle = this.x*this.y;
     ctx.fill();
     ctx.closePath();
     collisionDetection();
