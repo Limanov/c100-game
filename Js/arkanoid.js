@@ -379,12 +379,12 @@ function drawBricks() {
     if (aGame.keys && aGame.keys[37]) 
     {
       if(paddle.x >= 0)
-      {paddle.speedx = -gameSpeed}
+      {paddle.speedx = -gameSpeed} 
       else{paddle.speedx = 0}; 
       if(!drawB.start && paddle.x - paddle.x/2 >= 0)
       {dx = -gameSpeed;}
     }
-    if (aGame.keys && aGame.keys[32]) 
+    if (aGame.keys && aGame.keys[32] && !drawB.start) 
     {
       drawB.start =true;
       dx = 5; dy = -gameSpeed;
