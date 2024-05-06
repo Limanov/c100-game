@@ -313,12 +313,13 @@ function drawBricks() {
     ctx = aGame.context;
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = this.x*this.y;
+    ctx.fillStyle = "#009"+this.x+this.y;
     ctx.fill();
     ctx.closePath();
     collisionDetection();
     }
     this.newPosition = function() {
+    ctx.fillStyle = "#009"+this.x+this.y;
     if(this.start)
     {
     if (x + dx > aGame.canvas.width - ballRadius || x + dx < ballRadius) {
