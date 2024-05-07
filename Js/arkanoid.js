@@ -80,6 +80,7 @@ function collisionDetection() {
   if(IsAllNotVisible()){
    stage++;
    newBricks();
+   startGame();
    }
 }
 
