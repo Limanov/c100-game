@@ -67,7 +67,7 @@ function collisionDetection() {
       if (b.IsVisible === 1) {
         if (canvasWidth > b.x && canvasWidth < b.x + brickWidth && canvasHeight > b.y && canvasHeight < b.y + brickHeight) 
         {
-          b.hits--;//
+          b.hits--;
           dy = -dy;
           if(b.hits === 0)
           {
