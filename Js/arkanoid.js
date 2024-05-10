@@ -1,4 +1,4 @@
-var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = 0, bonus;
+var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = 0, bonus =0;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 const brickRowCount = 8;
 const brickColumnCount = 8;
@@ -57,7 +57,7 @@ start : function(){
 },
 clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.resultText.textContent = 'RESULT: ' + result + ' LIFE: ' + life + ' STAGE: ' + stage ;
+    this.resultText.textContent = '>RESULT: ' + result + ' LIFE: ' + life + ' STAGE: ' + stage ;
 }
 }
 function collisionDetection() {
