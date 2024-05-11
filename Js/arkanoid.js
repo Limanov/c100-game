@@ -17,7 +17,7 @@ for (var c = 0; c < brickColumnCount; c++) {
 }
 }
 function oneBrick(){
-  bricks[0][0] = { x: 0, y: 0 , IsVisible: 1};
+  bricks[0][0] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
 }
 newBricks();
 function startGame() {
