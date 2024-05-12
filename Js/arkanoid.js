@@ -1,4 +1,4 @@
-var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = 0, bonus =0;
+var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = 0, bonus = 0, isCustomTest = false;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 const brickRowCount = 8;
 const brickColumnCount = 8;
@@ -9,14 +9,20 @@ const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
 var bricks = [];
 function newBricks(){
+  if(!isCustomTest){
 for (var c = 0; c < brickColumnCount; c++) {
   bricks[c] = [];
   for (var r = 0; r < brickRowCount; r++) {
     bricks[c][r] = { x: 0, y: 0 , IsVisible: 1, hits: 2};
+      }
+    }
+  }
+  else{
+    oneBrick();
   }
 }
-}
 function oneBrick(){
+  bricks[0] = [];
   bricks[0][0] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
 }
 newBricks();
