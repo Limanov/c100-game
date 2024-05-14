@@ -26,7 +26,12 @@ function oneBrick(){
   bricks[0][0] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
   bricks[0][1] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
 }
-newBricks();
+if(!isCustomTest){
+  newBricks();
+}
+else{
+  oneBrick();
+}
 function startGame() {
 paddle = new component(paddleWidth, paddleHeight, "green", canvasWidth/2 - paddleWidth/2, canvasHeight - paddleHeight);
 drawB = new drawBall(canvasWidth/2, canvasHeight - paddleHeight - 5,5 ,"black");
