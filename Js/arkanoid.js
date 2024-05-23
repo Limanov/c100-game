@@ -33,6 +33,7 @@ function oneBrick(){
   bricks[1][3] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
   bricks[2][0] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
   bricks[2][1] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[2][2] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
 }
 if(!isCustomTest){
   newBricks();
