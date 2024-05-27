@@ -92,7 +92,7 @@ start : function(){
 },
 clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.resultText.textContent = '>RESULT: ' + result + ' LIFE: ' + life + ' STAGE: ' + stage ;
+    this.resultText.textContent = 'RESULT: ' + result + ' LIFE: ' + life + ' STAGE: ' + stage ;
 }
 }
 function collisionDetection() {
