@@ -63,7 +63,12 @@ drawBr = new drawBricks();
   aGame.start();
 }
 function resetStats(){
-  newBricks();
+  if(!isCustomTest){
+    newBricks();
+  }
+  else{
+    oneBrick();
+  }
   result = 0, life = 3; dx =0, dy = -gameSpeed;
 }
 
