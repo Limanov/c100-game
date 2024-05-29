@@ -119,7 +119,12 @@ function collisionDetection() {
   }
   if(IsAllNotVisible()){
    stage++;
-   newBricks();
+   if(!isCustomTest){
+    newBricks();
+  }
+  else{
+    oneBrick();
+  }
    startGame();
    }
 }
