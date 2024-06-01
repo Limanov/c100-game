@@ -24,7 +24,7 @@ for (var c = 0; c < brickColumnCount; c++) {
 function oneBrick(){
   brickRowCount = 5;
   brickColumnCount = 4;
-  bricks[0] = [];
+  bricks[0] = []; //test
   bricks[0][0] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
   bricks[0][1] = { x: 0, y: 0 , IsVisible: 0, hits: 1};
   bricks[0][2] = { x: 0, y: 0 , IsVisible: 0, hits: 1};
