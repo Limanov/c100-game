@@ -18,10 +18,10 @@ for (var c = 0; c < brickColumnCount; c++) {
     }
   }
   else{
-    oneBrick();
+    oneBrick(stage);
   }
 }
-function oneBrick(){
+function oneBrick(level){
   brickRowCount = 5;
   brickColumnCount = 4;
   bricks[0] = []; //test
