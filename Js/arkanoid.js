@@ -18,10 +18,11 @@ for (var c = 0; c < brickColumnCount; c++) {
     }
   }
   else{
-    oneBrick(stage);
+    oneBrick();
   }
 }
-function oneBrick(level){
+function oneBrick(){
+  if (stage === -1){
   brickRowCount = 5;
   brickColumnCount = 4;
   bricks[0] = []; //test
@@ -49,7 +50,7 @@ function oneBrick(level){
   bricks[3][3] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
   bricks[3][4] = { x: 0, y: 0 , IsVisible: 0, hits: 1};
 }
-
+}
 if(!isCustomTest){
   newBricks();
 }
