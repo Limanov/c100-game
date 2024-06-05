@@ -9,7 +9,7 @@ const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
 var bricks = [];
 function newBricks(){
-  if(stage >=-1){
+  if(!isCustomTest){
 for (var c = 0; c < brickColumnCount; c++) {
   bricks[c] = [];
   for (var r = 0; r < brickRowCount; r++) {
@@ -51,7 +51,7 @@ function oneBrick(){
   bricks[3][4] = { x: 0, y: 0 , IsVisible: 0, hits: 1};
 }
 }
-if(stage >=-1){
+if(!isCustomTest){
   newBricks();
 }
 else{
@@ -65,7 +65,7 @@ drawBr = new drawBricks();
   aGame.start();
 }
 function resetStats(){
-  if(stage >=-1){
+  if(!isCustomTest){
     newBricks();
   }
   else{
@@ -121,7 +121,7 @@ function collisionDetection() {
   }
   if(IsAllNotVisible()){
    stage++;
-   if(stage >=-1){
+   if(!isCustomTest){
     newBricks();
   }
   else{
@@ -175,7 +175,7 @@ function component(width, height, color, x, y) {
   }
 function drawBricks() {
   this.update = function(){
-    if(stage === 2){
+    if(stage === 0){
       for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
           if(r % 2 === 1 && c % 2 === 1){
