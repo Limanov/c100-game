@@ -1,4 +1,4 @@
-var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = -2, bonus = 0, isCustomTest = true;
+var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = -1, bonus = 0, isCustomTest = false;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 var brickRowCount = 8;
 var brickColumnCount = 8;
