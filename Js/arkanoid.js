@@ -1,4 +1,4 @@
-var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = -1, bonus = 0, isCustomTest = false;
+var paddle, drawB, drawBr, dx = 0, dy = 0; gameSpeed = 10, stage = -2, bonus = 0, isCustomTest = true;
 var canvasWidth = 640, canvasHeight = 480, paddleHeight = 15, paddleWidth = 120, result = 0, life = 3, interval = 20;
 var brickRowCount = 8;
 var brickColumnCount = 8;
@@ -22,7 +22,7 @@ for (var c = 0; c < brickColumnCount; c++) {
   }
 }
 function oneBrick(){
-  if (stage === -2){
+  if (stage === -1){
   brickRowCount = 5;
   brickColumnCount = 4;
   bricks[0] = []; //test
@@ -49,6 +49,34 @@ function oneBrick(){
   bricks[3][2] = { x: 0, y: 0 , IsVisible: 0, hits: 1};
   bricks[3][3] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
   bricks[3][4] = { x: 0, y: 0 , IsVisible: 0, hits: 1};
+}
+if (stage === -2){
+  brickRowCount = 5;
+  brickColumnCount = 4;
+  bricks[0] = []; //test
+  bricks[0][0] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[0][1] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[0][2] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[0][3] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[0][4] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[1] = [];
+  bricks[1][0] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[1][1] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[1][2] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[1][3] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[1][4] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[2] = [];
+  bricks[2][0] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[2][1] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[2][2] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[2][3] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[2][4] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[3] = [];
+  bricks[3][0] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[3][1] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[3][2] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[3][3] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
+  bricks[3][4] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
 }
 }
 if(!isCustomTest){
@@ -175,7 +203,7 @@ function component(width, height, color, x, y) {
   }
 function drawBricks() {
   this.update = function(){
-    if(stage === 0){
+    if(stage === -2){
       for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
           if(r % 2 === 1 && c % 2 === 1){
