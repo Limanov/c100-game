@@ -50,7 +50,7 @@ function oneBrick(){
   bricks[3][3] = { x: 0, y: 0 , IsVisible: 1, hits: 1};
   bricks[3][4] = { x: 0, y: 0 , IsVisible: 0, hits: 1};
 }
-if (stage === -2){
+if (stage === -2){//new stage
   brickRowCount = 5;
   brickColumnCount = 4;
   bricks[0] = []; //test
